@@ -25,25 +25,35 @@ itemsArray[activeItemIndex].classList.add("active");
 //nextBtn
 const nextBtn = document.querySelector(".next");
 nextBtn.addEventListener("click", function() {
-
-      prevBtn.classList.remove("hidden")
-      itemsArray[activeItemIndex].classList.remove("active");
-      activeItemIndex++;
-      itemsArray[activeItemIndex].classList.add("active");
-      if (activeItemIndex === itemsArray.length - 1) {
-        nextBtn.classList.add("hidden")
-      }
+  prevBtn.classList.remove("hidden")
+  itemsArray[activeItemIndex].classList.remove("active");
+  activeItemIndex++;
+  itemsArray[activeItemIndex].classList.add("active");
+  if (activeItemIndex === itemsArray.length - 1) {
+    nextBtn.classList.add("hidden")
+  }
 })
 
 //prevBtn
 const prevBtn = document.querySelector(".prev");
 prevBtn.classList.add("hidden")
 prevBtn.addEventListener("click", function() {
-      nextBtn.classList.remove("hidden")
-      itemsArray[activeItemIndex].classList.remove("active");
-      activeItemIndex--;
-      itemsArray[activeItemIndex].classList.add("active");
-      if (activeItemIndex === 0) {
-        prevBtn.classList.add("hidden")
-      }
+  nextBtn.classList.remove("hidden")
+  itemsArray[activeItemIndex].classList.remove("active");
+  activeItemIndex--;
+  itemsArray[activeItemIndex].classList.add("active");
+  if (activeItemIndex === 0) {
+    prevBtn.classList.add("hidden")
+  }
 })
+
+//autoplay
+let autoPlay = setInterval(() => {
+  itemsArray[activeItemIndex].classList.remove("active");
+  if (activeItemIndex < itemsArray.length - 1) {
+    activeItemIndex++;
+  } else {
+    activeItemIndex = 0;
+  }
+  itemsArray[activeItemIndex].classList.add("active");
+}, 3000)
